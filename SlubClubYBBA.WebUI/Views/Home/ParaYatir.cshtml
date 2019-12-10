@@ -1,0 +1,73 @@
+﻿@model SlubClubYBBA.WebUI.Models.HesapModel
+
+@{
+    ViewBag.Title = "ParaYatir";
+}
+
+<h2>ParaYatir</h2>
+
+
+@using (Html.BeginForm("ParaYatirma","Home",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>HesapModel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group" style="display:none">
+        @Html.LabelFor(model => model.HesapNo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.HesapNo, new { htmlAttributes = new { @class = "form-control"} })
+            @Html.ValidationMessageFor(model => model.HesapNo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" style="display:none">
+        @Html.LabelFor(model => model.EkNo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EkNo, new { htmlAttributes = new { @class = "form-control"} })
+            @Html.ValidationMessageFor(model => model.EkNo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BakiyeBilgi, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BakiyeBilgi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BakiyeBilgi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="display:none">
+        @Html.LabelFor(model => model.AktiflikDurumu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.AktiflikDurumu,new {htmlAttributes=new {@disabled="disabled" } })
+                @Html.ValidationMessageFor(model => model.AktiflikDurumu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="display:none">
+        @Html.LabelFor(model => model.TCKN, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TCKN, new { htmlAttributes = new { @class = "form-control"} })
+            @Html.ValidationMessageFor(model => model.TCKN, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
